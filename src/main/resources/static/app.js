@@ -194,6 +194,7 @@ function httpPostRequest(url, body, errorMsg, callback) {
 	http.open('POST', url, true);
 	http.setRequestHeader('Content-type', 'application/json');
 	http.addEventListener('readystatechange', processRequest, false);
+	console.log(body);
 	http.send(JSON.stringify(body));
 
 	function processRequest() {
