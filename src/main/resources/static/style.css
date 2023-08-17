@@ -41,14 +41,13 @@ nav i.fa:hover {
 
 #main-container {
 	padding-bottom: 80px;
+	display: flex;
+	justify-content: center;
 }
 
-/*vertical-center {
-	position: relative;
-	top: 30%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}*/
+.vertical-center table {
+	margin-top: 3em !important;
+}
 
 .horizontal-center {
 	margin: 0 auto;
@@ -81,6 +80,40 @@ input.btn {
 .btn-success:hover {
 	background-color: #1abd61 !important;
 	border-color: #1abd61;
+}
+
+.btn-info {
+	background-color: #0088aa !important;
+	border-color: #0088aa;
+}
+
+.btn-info:hover {
+	background-color: #00708c !important;
+	border-color: #00708c;
+}
+
+.btn-warning {
+	background-color: #ffcc00 !important;
+	border-color: #ffcc00;
+	color: #4d4d4d;
+}
+
+.btn-warning:hover {
+	background-color: #eabb3a !important;
+	border-color: #eabb3a;
+	color: #4d4d4d;
+}
+
+.btn-warning:active {
+	color: #4d4d4d;
+}
+
+.btn-warning:focus {
+	color: #4d4d4d;
+}
+
+.btn-warning:active:focus {
+	color: #4d4d4d;
 }
 
 .footer {
@@ -124,30 +157,19 @@ a:hover .demo-logo {
 	filter: brightness(0.7);
 }
 
-#join-dialog {
-	margin-left: auto;
-    margin-right: auto;
-    max-width: 70%;
+#join {
+	padding-top: 40px;
+}
+
+#not-logged {
+	padding-top: 40px;
+	width: 350px;
 }
 
 #join-dialog h1 {
 	color: #4d4d4d;
 	font-weight: bold;
 	text-align: center;
-}
-
-#img-div {
-	text-align: center;
-	margin-top: 3em;
-	margin-bottom: 3em;
-	/*position: relative;
-	top: 20%;
-	left: 50%;
-	transform: translate(-50%, -50%);*/
-}
-
-#img-div img {
-	height: 15%;
 }
 
 #join-dialog label {
@@ -158,8 +180,34 @@ a:hover .demo-logo {
 	margin-top: 15px;
 }
 
+#join-dialog hr {
+	background: #4d4d4d;
+}
+
+#img-div {
+	text-align: center;
+    padding-bottom: 3em;
+}
+
+#img-div img {
+	height: 15%;
+}
+
+#logged {
+	width: 100%;
+}
+
+#join {
+	max-width: 700px;
+    margin: auto;
+}
+
 #session-header {
 	margin-bottom: 20px;
+}
+
+#session-header form {
+	display: inline;
 }
 
 #session-title {
@@ -195,6 +243,16 @@ a:hover .demo-logo {
 	border-bottom-right-radius: 4px;
 }
 
+#video-container p.userName {
+	float: right;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 0px;
+    font-weight: lighter;
+    font-size: 12px;
+    background: #777777;
+    color: #f8f8f8;
+}
+
 video {
 	width: 100%;
 	height: auto;
@@ -211,6 +269,20 @@ video {
 	font-weight: bold;
 	border-bottom-right-radius: 4px;
 }
+
+#main-video p.userName {
+	position: absolute;
+	right: 0;
+	font-size: 16px !important;
+    margin-right: 15px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 0px;
+    font-weight: lighter;
+    font-size: 12px;
+    background: #777777;
+    color: #f8f8f8;
+}
+
 
 #session img {
 	width: 100%;
@@ -229,38 +301,64 @@ video {
 	height: 180px;
 }
 
+table i {
+	cursor: pointer;
+	margin-left: 1em;
+}
+
+#tooltip-div {
+	text-align: left;
+}
+
+#tooltip-div hr {
+	margin: 5px 0;
+}
+
+#login-info {
+	text-align: right;
+}
+
+#login-info form {
+	display: inline;
+}
+
+#login-info div {
+	display: inline;
+	margin-right: 1em;
+}
+
+#name-user {
+	font-weight: bold;
+}
+
 
 /* xs ans md screen resolutions*/
 
-@media screen and (max-width: 991px) and (orientation: portrait) {
-	#join-dialog {
-		max-width: inherit;
+@media screen and (max-width: 991px) {
+	#join {
+		padding-top: inherit;
+	}
+	
+	#not-logged {
+		padding-top: inherit;
+	}
+	.container .navbar-header {
+		margin-right: 0 !important;
+		margin-left: 0 !important;
+	}
+	.nav-icon {
+		padding: 9px 8px 9px 8px;
+	}
+	nav i.fa {
+		font-size: 32px;
+	}
+	.vertical-center {
+		padding-top: 10px;
+	}
+	#img-div {
+		padding-bottom: 1em;
 	}
 	#img-div img {
 		height: 10%;
-	}
-	#img-div {
-		margin-top: 2em;
-		margin-bottom: 2em;
-	}
-	.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
-		margin-right: 0;
-		margin-left: 0;
-	}
-	.navbar-header i.fa {
-		font-size: 30px;
-	}
-	.navbar-header a.nav-icon {
-		padding: 7px 3px 7px 3px;
-	}
-}
-
-@media only screen and (max-height: 767px) and (orientation: landscape) {
-	#img-div {
-		margin-top: 1em;
-		margin-bottom: 1em;
-	}
-	#join-dialog {
-		max-width: inherit;
 	}
 }

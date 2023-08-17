@@ -1,17 +1,26 @@
-FROM node:16-alpine3.16
 
-# Copy openvidu-basic-node
-COPY ./openvidu-basic-node /opt/openvidu-basic-node
+FROM maven:3.6.3 as build
+WORKDIR /basic-webinar
+COPY ./pom.xml pom.xml
+COPY ./src/main src/main
 
-# Install openvidu-basic-node dependencies
-RUN npm --prefix /opt/openvidu-basic-node install
+RUN mvn clean install
+RUN mvn -o package
 
-# Copy static files to openvidu-basic-node
-RUN mkdir -p /opt/openvidu-basic-node/public
-COPY ./web /opt/openvidu-basic-node/public
+FROM alpine:3.11
 
-WORKDIR /opt/openvidu-basic-node
+RUN apk update && \
+    apk add openjdk11-jre && \
+    rm -rf /var/cache/apk/*
 
-COPY docker/entrypoint.sh .
+# Install basic-webinar
+RUN mkdir -p /opt/openvidu-basic-webinar
+COPY --from=build /basic-webinar/target/openvidu-roles-java-*.jar /opt/openvidu-basic-webinar/openvidu-basic-webinar.jar
+# Entrypoint
+COPY ./docker/entrypoint.sh /usr/local/bin
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
-ENTRYPOINT [ "./entrypoint.sh" ]
+CMD /usr/local/bin/entrypoint.sh
+
+
+
